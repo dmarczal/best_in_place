@@ -30,7 +30,10 @@ module BestInPlace
         value = fieldValue ? opts[:collection][1] : opts[:collection][0]
         collection = opts[:collection].to_json
       end
-      out = "<span class='best_in_place'"
+
+      more_classes = opts[:class] ? opts[:class] : ''
+
+      out = "<span class='best_in_place #{more_classes}'"
       out << " id='#{BestInPlace::Utils.build_best_in_place_id(object, field)}'"
       out << " data-url='#{opts[:path].blank? ? url_for(object) : url_for(opts[:path])}'"
       out << " data-object='#{object.class.to_s.gsub("::", "_").underscore}'"
